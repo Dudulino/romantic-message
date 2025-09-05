@@ -1,95 +1,108 @@
 body {
-  font-style: Arial;
+  font-family: Arial, sans-serif;
   background: black;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .animation-box {
-  width: 75%;
-  height: 27.5rem;
+  width: 90%;
+  max-width: 1200px;
+  height: 100vh;
   background-color: rgb(0, 0, 0);
   margin: 0 auto;
   overflow: hidden;
   position: relative;
-}
-
-.animation-container {
-  width: 1000rem;
-  height: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .first-text {
   font-size: 4.4rem;
   position: absolute;
   left: 2.5rem;
-  top: 5rem;
+  top: 20%;
   opacity: 0;
   animation-name: topFadeOut;
   animation-duration: 4s;
   color: white;
+  text-align: center;
+  width: calc(100% - 5rem);
+  line-height: 1.2;
 }
 
 .second-text {
   font-size: 3.4rem;
   position: absolute;
-  top: 8.5rem;
+  top: 30%;
+  left: 2rem;
+  right: 2rem;
   opacity: 0;
   animation-name: rightFadeInOut;
   animation-delay: 4.5s;
   animation-duration: 4s;
   color: #ccc;
+  text-align: center;
+  line-height: 1.3;
 }
 
 .third-text {
-  transform: rotate(-90deg);
-  font-size: 2rem;
+  font-size: 2.5rem;
   position: absolute;
-  left: 45%;
+  left: 50%;
   top: 45%;
+  transform: translate(-50%, -50%);
   opacity: 0;
-  animation-name: topFadeOutVertical;
+  animation-name: centerFadeInOut;
   animation-delay: 9s;
   animation-duration: 4s;
   color: #a3ddf0;
+  text-align: center;
   white-space: nowrap;
 }
 
 .fourth-text {
   font-size: 3.4rem;
   position: absolute;
-  top: 10.5rem;
-  left: 10%;
+  top: 40%;
+  left: 2rem;
+  right: 2rem;
   opacity: 0;
   color: #f0a3be;
   animation-name: fadeInOut;
   animation-delay: 13.5s;
   animation-duration: 4s;
+  text-align: center;
+  line-height: 1.3;
 }
 
 .fifth-text {
-  font-size: 5rem;
+  font-size: 4rem;
   position: absolute;
-  left: 5%;
+  left: 2rem;
+  right: 2rem;
   bottom: 25%;
   opacity: 0;
   color: #f0eba3;
   animation-name: bottomFadeOut;
   animation-delay: 18s;
   animation-duration: 4s;
+  text-align: center;
+  line-height: 1.2;
 }
 
 @keyframes topFadeOut {
   0% {
-    position: absolute;
-    top: -3rem;
+    transform: translateY(-50px);
     opacity: 0;
   }
-
   75% {
-    position: absolute;
-    top: 25%;
+    transform: translateY(0);
     opacity: 1;
   }
-
   100% {
     opacity: 0;
   }
@@ -97,56 +110,45 @@ body {
 
 @keyframes bottomFadeOut {
   0% {
-    position: absolute;
-    bottom: -5rem;
+    transform: translateY(50px);
     opacity: 0;
   }
-
   75% {
-    position: absolute;
-    bottom: 25%;
+    transform: translateY(0);
     opacity: 1;
   }
-
   100% {
     opacity: 0;
   }
 }
 
-@keyframes topFadeOutVertical {
+@keyframes centerFadeInOut {
   0% {
-    position: absolute;
-    top: -3rem;
+    transform: translate(-50%, -50%) scale(0.8);
     opacity: 0;
   }
-
   75% {
-    position: absolute;
-    top: 45%;
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
-
   100% {
+    transform: translate(-50%, -50%) scale(1.1);
     opacity: 0;
   }
 }
 
 @keyframes rightFadeInOut {
   0% {
-    position: absolute;
-    right: -3rem;
+    transform: translateX(50px);
     opacity: 0;
   }
-
   75% {
-    position: absolute;
-    right: 10rem;
+    transform: translateX(0);
     opacity: 1;
   }
-
   100% {
+    transform: translateX(-20px);
     opacity: 0;
-    right: 10rem;
   }
 }
 
@@ -154,12 +156,162 @@ body {
   0% {
     opacity: 0;
   }
-
   45% {
     opacity: 1;
   }
-
   100% {
-    opacity: 0%;
+    opacity: 0;
+  }
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+  .animation-box {
+    width: 95%;
+    height: 100vh;
+  }
+  
+  .first-text {
+    font-size: 3rem;
+    left: 1rem;
+    width: calc(100% - 2rem);
+    top: 15%;
+  }
+  
+  .second-text {
+    font-size: 2.4rem;
+    top: 25%;
+    left: 1rem;
+    right: 1rem;
+  }
+  
+  .third-text {
+    font-size: 2rem;
+    white-space: normal;
+    max-width: 90%;
+  }
+  
+  .fourth-text {
+    font-size: 2.4rem;
+    top: 35%;
+    left: 1rem;
+    right: 1rem;
+  }
+  
+  .fifth-text {
+    font-size: 2.8rem;
+    left: 1rem;
+    right: 1rem;
+    bottom: 20%;
+  }
+}
+
+/* Móviles */
+@media screen and (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
+  
+  .animation-box {
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .first-text {
+    font-size: 2.2rem;
+    left: 0.5rem;
+    width: calc(100% - 1rem);
+    top: 12%;
+    line-height: 1.1;
+  }
+  
+  .second-text {
+    font-size: 1.8rem;
+    top: 22%;
+    left: 0.5rem;
+    right: 0.5rem;
+    line-height: 1.2;
+  }
+  
+  .third-text {
+    font-size: 1.6rem;
+    max-width: 95%;
+    line-height: 1.3;
+  }
+  
+  .fourth-text {
+    font-size: 1.8rem;
+    top: 32%;
+    left: 0.5rem;
+    right: 0.5rem;
+    line-height: 1.2;
+  }
+  
+  .fifth-text {
+    font-size: 2.2rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 15%;
+    line-height: 1.1;
+  }
+}
+
+/* Móviles muy pequeños */
+@media screen and (max-width: 360px) {
+  .first-text {
+    font-size: 1.8rem;
+    top: 10%;
+  }
+  
+  .second-text {
+    font-size: 1.5rem;
+    top: 20%;
+  }
+  
+  .third-text {
+    font-size: 1.4rem;
+  }
+  
+  .fourth-text {
+    font-size: 1.5rem;
+    top: 30%;
+  }
+  
+  .fifth-text {
+    font-size: 1.8rem;
+    bottom: 12%;
+  }
+}
+
+/* Orientación horizontal en móviles */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .animation-box {
+    height: 100vh;
+  }
+  
+  .first-text {
+    top: 5%;
+    font-size: 2.5rem;
+  }
+  
+  .second-text {
+    top: 15%;
+    font-size: 2rem;
+  }
+  
+  .third-text {
+    font-size: 1.8rem;
+  }
+  
+  .fourth-text {
+    top: 25%;
+    font-size: 2rem;
+  }
+  
+  .fifth-text {
+    bottom: 5%;
+    font-size: 2.2rem;
   }
 }
